@@ -3,8 +3,8 @@
 Progetto per comandare un display OLED SSD1306 128x64 via I2C con il
 PIC18F45K22 
 
-Il codice originale è stato preso da un post del forum
-MikroE e poi ristrutturato con solo le funzioni necessarie.
+Il codice originale è stato preso da un post del [Forum MikroE](https://forum.mikroe.com/viewtopic.php?p=310697)
+che è stato ristrutturato con solo le funzioni necessarie.
 
 
 ## Struttura
