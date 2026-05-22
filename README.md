@@ -1,25 +1,15 @@
-# display_I2C
+# display I2C OLED 128x64
 
-Progetto per comandare un display OLED SSD1306 128x64 via I2C con il
-PIC18F45K22 
+Progetto per comandare un display OLED SSD1306 128x64 via I2C con il PIC18F45K22 
 
 Il codice originale è stato preso da un post del [Forum MikroE](https://forum.mikroe.com/viewtopic.php?p=310697)
 che è stato ristrutturato con solo le funzioni necessarie.
 
+Inoltre in [Hadrware](Hardware/OLED_mikrobus_adapter) ho aggiunto un prototipo di adattatore tra il 
+mikro bus e il display con TP e selezione VDD (5V o 3.3V).
 
 ## Struttura
 ...
-
-## Collegamenti
-
-| Display OLED | PIC18F45K22 |
-| --- | --- |
-| SCL/SCK | RC3, pin 18 |
-| SDA | RC4, pin 23 |
-| RST | RC0 |
-| VCC | Alimentazione |
-| GND | GND |
-
 
 ## Funzioni principali
 
@@ -32,11 +22,6 @@ display_line(0, 0, 127, 31, DISPLAY_COLOR_ON);
 display_rect(0, 0, 128, 32, DISPLAY_COLOR_ON);
 display_update();
 ```
-
-Attenzione che il display viene
-aggiornato solo quando si chiama `display_update()`.
-
-## HAL I2C
-...
+Attenzione: il display viene aggiornato SOLO quando si chiama `display_update()`.
 
 All'inizio il codice disegna un bordo, due diagonali e una griglia di pixel.
