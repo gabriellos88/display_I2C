@@ -19,11 +19,14 @@
                    projectFiles="true">
       <logicalFolder name="src" displayName="src" projectFiles="true">
         <logicalFolder name="hal" displayName="hal" projectFiles="true">
+          <itemPath>src/hal/eh008_i2c.c</itemPath>
+          <itemPath>src/hal/eh008_i2c.h</itemPath>
+          <itemPath>src/hal/eh008.c</itemPath>
+          <itemPath>src/hal/eh008.h</itemPath>
+          <itemPath>src/hal/eh008_common.h</itemPath>
         </logicalFolder>
-        <itemPath>src/scantstV3.c</itemPath>
-        <itemPath>src/scantstV3.mcppi</itemPath>
-        <itemPath>src/scantstV3driver.c</itemPath>
-        <itemPath>src/scantstV3header.h</itemPath>
+        <itemPath>src/main.c</itemPath>
+        <itemPath>src/mapping.h</itemPath>
       </logicalFolder>
     </logicalFolder>
   </logicalFolder>

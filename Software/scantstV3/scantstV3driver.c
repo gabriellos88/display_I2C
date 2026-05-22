@@ -2,58 +2,7 @@
 uint8_t _i2caddr, _vccstate, x_pos = 0, y_pos = 0, text_size = 1;
 
 bool wrap = true, SSD1306_Color = true;
-
-static void I2C1_WaitIdle(void)
-{
-  while ((SSP1CON2 & 0x1F) || (SSP1STAT & 0x04)) {
-  }
-}
-
-void I2C1_Init(uint32_t clock_hz)
-{
-  TRISCbits.TRISC3 = 1;      // SCL/SCK, released for MSSP open-drain operation.
-  TRISCbits.TRISC4 = 1;      // SDA, released for MSSP open-drain operation.
-
-  SSP1CON1 = 0x00;
-  SSP1CON2 = 0x00;
-  SSP1STAT = 0x80;           // Slew-rate disabled for 100 kHz standard mode.
-  SSP1ADD = (uint8_t)((_XTAL_FREQ / (4UL * clock_hz)) - 1UL);
-  PIR1bits.SSP1IF = 0;
-  SSP1CON1 = 0x28;           // Enable MSSP1 in I2C master mode.
-}
-
-void I2C1_Start(void)
-{
-  I2C1_WaitIdle();
-  PIR1bits.SSP1IF = 0;
-  SSP1CON2bits.SEN = 1;
-  while (!PIR1bits.SSP1IF) {
-  }
-  PIR1bits.SSP1IF = 0;
-}
-
-uint8_t I2C1_Write(uint8_t data)
-{
-  I2C1_WaitIdle();
-  PIR1bits.SSP1IF = 0;
-  SSP1BUF = data;
-  while (!PIR1bits.SSP1IF) {
-  }
-  PIR1bits.SSP1IF = 0;
-  return SSP1CON2bits.ACKSTAT;
-}
-
-void I2C1_Stop(void)
-{
-  I2C1_WaitIdle();
-  PIR1bits.SSP1IF = 0;
-  SSP1CON2bits.PEN = 1;
-  while (!PIR1bits.SSP1IF) {
-  }
-  PIR1bits.SSP1IF = 0;
-}
-
-const uint8_t font[] = {
+const uint8_t Font[] = {
 0x00, 0x00, 0x00, 0x00, 0x00,
 0x00, 0x00, 0x5F, 0x00, 0x00,
 0x00, 0x07, 0x00, 0x07, 0x00,

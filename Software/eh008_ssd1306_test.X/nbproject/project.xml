@@ -3,7 +3,7 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>ssd1306_test</name>
+            <name>eh008_ssd1306_test</name>
             <creation-uuid>67a1c60d-44fd-4bb6-9895-7f27f0533a41</creation-uuid>
             <make-project-type>0</make-project-type>
             <sourceEncoding>ISO-8859-1</sourceEncoding>

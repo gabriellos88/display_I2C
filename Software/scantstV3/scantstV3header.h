@@ -1,26 +1,15 @@
 /******************************************************************************
 oledalmdriver128x32.h
-SSD1306 OLED header for XC8 compiler.
+SSD1306 OLED header for mikroC PRO for PIC compiler.
 Reference: Adafruit Industries SSD1306 OLED driver and graphics library.
 The driver is for I2C mode only.
 ******************************************************************************/
-#include <xc.h>
 #include <stdbool.h>
 #include <stdint.h>
-#include <stdlib.h>
 //------------------------------ Definitions ---------------------------------//
-// PIC18F45K22 hardware I2C1: SCL/SCK = RC3, SDA = RC4
-#ifndef _XTAL_FREQ
-#define _XTAL_FREQ 16000000UL
-#endif
-
-#define SSD1306_I2C_SPEED_HZ     100000UL
-#define SSD1306_I2C_ADDR_7BIT    0x3C
-#define SSD1306_I2C_ADDR_WRITE   (SSD1306_I2C_ADDR_7BIT << 1)
-
 // I2C Definitions
 #define SSD1306_Start    I2C1_Start
-#define SSD1306_Write    I2C1_Write
+#define SSD1306_Write    I2C1_Wr
 #define SSD1306_Stop     I2C1_Stop
 
 // Display size definitions
@@ -62,13 +51,9 @@ The driver is for I2C mode only.
 #define SSD1306_VERTICAL_AND_RIGHT_HORIZONTAL_SCROLL 0x29
 #define SSD1306_VERTICAL_AND_LEFT_HORIZONTAL_SCROLL  0x2A
 
-extern uint8_t _i2caddr, _vccstate, x_pos, y_pos, text_size;
-extern bool wrap, SSD1306_Color;
+extern uint8_t _i2caddr, _vccstate, x_pos = 0, y_pos = 0, text_size = 1;
+extern bool wrap = true, SSD1306_Color = true;
 
-void I2C1_Init(uint32_t clock_hz);
-void I2C1_Start(void);
-uint8_t I2C1_Write(uint8_t data);
-void I2C1_Stop(void);
 void ssd1306_command(uint8_t c);
 void SSD1306_Begin(uint8_t vccstate, uint8_t i2caddr);
 void SSD1306_TextSize(uint8_t t_size);
